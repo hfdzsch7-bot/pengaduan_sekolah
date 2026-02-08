@@ -10,7 +10,8 @@ $query = "SELECT
         a.feedback,
         k.ket_kategori
     FROM aspirasi a
-    JOIN kategori k ON a.id_kategori = k.id_kategori";
+    JOIN kategori k ON a.id_kategori = k.id_kategori
+    ORDER BY a.id_aspirasi DESC ";
 
 $result_set = mysqli_query($koneksi, $query);
 $row = [];
@@ -49,3 +50,4 @@ while ($rows = mysqli_fetch_assoc($result_set)) {
 
 </body>
 </html>
+
