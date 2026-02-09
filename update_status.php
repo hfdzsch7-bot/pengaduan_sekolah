@@ -11,5 +11,13 @@ $query = "UPDATE aspirasi
         
 $sql = mysqli_query($koneksi, $query);
 
+if ($sql) {
+    echo "<script>
+            alert('Berhasil memperbarui status dan feedback aspirasi');
+            window.location.href = 'admin.php';
+          </script>";
+    exit;
+}
+
 header("Location: admin.php");
 exit;
