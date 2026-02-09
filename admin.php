@@ -53,7 +53,7 @@ $data = mysqli_query($koneksi, $query);
                 <td><?= htmlspecialchars($d['lokasi']) ?></td>
                 <td><?= htmlspecialchars($d['keterangan']) ?></td>
                 <td>
-                    <span class="status <?= strtolower($d['status']) ?>">
+                    <span class="status">
                         <?= $d['status'] ?>
                     </span>
                 </td>
@@ -79,3 +79,4 @@ $data = mysqli_query($koneksi, $query);
 
 </body>
 </html>
+
