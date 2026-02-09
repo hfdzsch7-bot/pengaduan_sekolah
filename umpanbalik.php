@@ -3,11 +3,7 @@ include 'koneksi.php';
 
 // Ambil data aspirasi beserta kategori
 $query = "SELECT 
-        a.nis,
-        a.lokasi,
-        a.keterangan,
-        a.status,
-        a.feedback,
+        a.*,
         k.ket_kategori
     FROM aspirasi a
     JOIN kategori k ON a.id_kategori = k.id_kategori
@@ -50,4 +46,5 @@ while ($rows = mysqli_fetch_assoc($result_set)) {
 
 </body>
 </html>
+
 
