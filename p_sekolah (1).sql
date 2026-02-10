@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2026 at 02:03 PM
+-- Generation Time: Feb 10, 2026 at 03:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `p_sekolah`
+-- Database: `db_aspirasi`
 --
 
 -- --------------------------------------------------------
@@ -28,16 +28,17 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `username` varchar(10) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `id_admin` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`username`, `password`) VALUES
-('admin', '123');
+INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -46,14 +47,26 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 --
 
 CREATE TABLE `aspirasi` (
-  `id_aspirasi` int(5) NOT NULL,
-  `status` enum('menunggu','proses','selesai','') NOT NULL,
-  `id_kategori` int(5) NOT NULL,
-  `feedback` varchar(50) NOT NULL,
+  `id_aspirasi` int(11) NOT NULL,
+  `nis` int(10) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `lokasi` varchar(50) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `nis` int(5) NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `status` enum('Menunggu','Proses','Selesai') DEFAULT 'Menunggu',
+  `feedback` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `aspirasi`
+--
+
+INSERT INTO `aspirasi` (`id_aspirasi`, `nis`, `id_kategori`, `lokasi`, `keterangan`, `status`, `feedback`) VALUES
+(1, 6, 1, 'Perpus', 'Kurang Buku Informatika', 'Menunggu', 'Terima kasih atas masukannya. Sudah Kami Selesaikan'),
+(2, 1, 2, 'Toilet', 'keran Air Rusak\r\n', 'Proses', 'Terima kasih atas masukannya. Kami akan segera memproses sarana dan prasarana yang bermasalah.'),
+(3, 1, 1, 'Toilet', 'asa', 'Selesai', 'yoo, uwiss lee'),
+(4, 6, 1, 'Lab', 'sfsfsd', 'Menunggu', 'Terima kasih atas masukannya. Kami akan segera memproses sarana dan prasarana yang bermasalah.'),
+(5, 1, 1, 'sad', 'sadsa', 'Menunggu', 'Terima kasih atas masukannya. Kami akan segera memprosesnya.'),
+(6, 1, 2, 'sad', 'dacccc', 'Proses', 'Tprosesnya.');
 
 -- --------------------------------------------------------
 
@@ -62,8 +75,8 @@ CREATE TABLE `aspirasi` (
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int(5) NOT NULL,
-  `ket_kategori` varchar(50) NOT NULL
+  `id_kategori` int(11) NOT NULL,
+  `ket_kategori` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -81,9 +94,17 @@ INSERT INTO `kategori` (`id_kategori`, `ket_kategori`) VALUES
 --
 
 CREATE TABLE `siswa` (
-  `nis` int(5) NOT NULL,
+  `nis` int(10) NOT NULL,
   `kelas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`nis`, `kelas`) VALUES
+(1, 'TKJ'),
+(6, 'RPL');
 
 --
 -- Indexes for dumped tables
@@ -93,7 +114,7 @@ CREATE TABLE `siswa` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `aspirasi`
@@ -120,10 +141,22 @@ ALTER TABLE `siswa`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `aspirasi`
 --
 ALTER TABLE `aspirasi`
-  MODIFY `id_aspirasi` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_aspirasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `kategori`
+--
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
