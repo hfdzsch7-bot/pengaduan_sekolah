@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2026 at 04:51 PM
+-- Generation Time: Feb 07, 2026 at 02:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,13 @@ CREATE TABLE `admin` (
   `password` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('admin', '123');
+
 -- --------------------------------------------------------
 
 --
@@ -40,17 +47,13 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `aspirasi` (
   `id_aspirasi` int(5) NOT NULL,
-  `nis` int(5) NOT NULL
-  `id_kategori` int(5) NOT NULL,
-  `lokasi` varchar(50) NOT NULL,
   `status` enum('menunggu','proses','selesai','') NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
+  `id_kategori` int(5) NOT NULL,
   `feedback` varchar(50) NOT NULL,
+  `lokasi` varchar(50) NOT NULL,
+  `ket` varchar(50) NOT NULL,
+  `nis` int(5) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `aspirasi`
---
 
 -- --------------------------------------------------------
 
@@ -81,11 +84,6 @@ CREATE TABLE `siswa` (
   `nis` int(5) NOT NULL,
   `kelas` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `siswa`
---
-
 
 --
 -- Indexes for dumped tables
@@ -125,7 +123,7 @@ ALTER TABLE `siswa`
 -- AUTO_INCREMENT for table `aspirasi`
 --
 ALTER TABLE `aspirasi`
-  MODIFY `id_aspirasi` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_aspirasi` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
