@@ -51,7 +51,7 @@ CREATE TABLE `aspirasi` (
   `id_kategori` int(5) NOT NULL,
   `feedback` varchar(50) NOT NULL,
   `lokasi` varchar(50) NOT NULL,
-  `ket` varchar(50) NOT NULL,
+  `keterangan` varchar(50) NOT NULL,
   `nis` int(5) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
